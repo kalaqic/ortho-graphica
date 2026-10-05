@@ -321,24 +321,27 @@ main li { margin: 6px 0; font-family: var(--mono); font-size: 14px; }
 .shot-white { opacity: 0; }
 .shots.is-white .shot-black { opacity: 0; }
 .shots.is-white .shot-white { opacity: 1; }
-.card:hover .shot-black,
-.piece-stage:hover .shots:not(.is-white) .shot-black { opacity: 0; }
-.card:hover .shot-white,
-.piece-stage:hover .shots:not(.is-white) .shot-white { opacity: 1; }
-.piece-stage:hover .shots.is-white .shot-black { opacity: 1; }
-.piece-stage:hover .shots.is-white .shot-white { opacity: 0; }
 .mark:has(.shots) {
   min-height: 0;
   display: block;
   background: #000;
 }
-.card:hover .mark:has(.shots) { background: #fff; }
-.card:hover .mark:has(.shots) .garment { filter: none; }
 .piece-stage:has(.shots) { background: #000; display: block; }
-.piece-stage:hover:has(.shots) { background: #fff; }
 .piece-stage.is-white:has(.shots) { background: #fff; }
-.piece-stage.is-white:hover:has(.shots) { background: #000; }
 .basket-line .shot { width: 88px; height: 88px; object-fit: cover; }
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover .shot-black,
+  .piece-stage:hover .shots:not(.is-white) .shot-black { opacity: 0; }
+  .card:hover .shot-white,
+  .piece-stage:hover .shots:not(.is-white) .shot-white { opacity: 1; }
+  .piece-stage:hover .shots.is-white .shot-black { opacity: 1; }
+  .piece-stage:hover .shots.is-white .shot-white { opacity: 0; }
+  .card:hover .mark:has(.shots) { background: #fff; }
+  .card:hover .mark:has(.shots) .garment { filter: none; }
+  .piece-stage:hover:has(.shots) { background: #fff; }
+  .piece-stage.is-white:hover:has(.shots) { background: #000; }
+}
 .meta, .card .meta { padding: 14px 14px 18px; }
 .card h3 {
   font-family: var(--display);
