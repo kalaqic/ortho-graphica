@@ -860,13 +860,17 @@
       playHome.pending = null;
     }
     startRadio(true);
-    setTimeout(() => intro.remove(), 750);
+    setTimeout(() => {
+      if (intro && intro.parentNode) intro.remove();
+    }, 750);
   }
-  if (intro && document.documentElement.classList.contains("locked")) {
+  if (intro) {
     intro.addEventListener("click", closeIntro);
+    intro.addEventListener("touchend", (e) => {
+      e.preventDefault();
+      closeIntro();
+    }, { passive: false });
     setTimeout(closeIntro, 3600);
-  } else if (intro) {
-    intro.remove();
   }
 
   const playlist = DATA.songs || [];
