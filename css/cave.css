@@ -34,7 +34,7 @@ body::before {
   pointer-events: none;
   z-index: 0;
   opacity: 0.42;
-  background: url("../grain.jpg") center / cover no-repeat;
+  background: url("../grain.webp") center / cover no-repeat;
   mix-blend-mode: screen;
 }
 .bar, main, .foot, .gate, #toast { position: relative; z-index: 1; }
@@ -677,7 +677,7 @@ textarea { min-height: 80px; resize: vertical; }
   inset: 0;
   pointer-events: none;
   opacity: 0.42;
-  background: url("../grain.jpg") center / cover no-repeat;
+  background: url("../grain.webp") center / cover no-repeat;
   mix-blend-mode: screen;
 }
 #intro .intro-cave { position: relative; z-index: 1; }
