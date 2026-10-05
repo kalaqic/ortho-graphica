@@ -100,33 +100,15 @@
   <script>
     document.getElementById("brand-cross").innerHTML = window.OGArt.cross({ width: 22, sw: 2.2, stroke: "#fff" });
     (function () {
-      const host = document.getElementById("intro-cross");
+      var host = document.getElementById("intro-cross");
       if (!host) return;
-      host.innerHTML = window.OGArt.cross({ className: "intro-cross", width: 110, sw: 3.2, stroke: "#f3f3f1" });
-      const paths = host.querySelectorAll("path");
-      const delays = [200, 700, 1050, 1350];
-      paths.forEach(function (path, i) {
-        var len = 100;
-        try {
-          len = path.getTotalLength() || 100;
-        } catch (err) {}
-        path.style.strokeDasharray = String(len);
-        path.style.strokeDashoffset = String(len);
-        if (typeof path.animate === "function") {
-          path.animate(
-            [{ strokeDashoffset: len }, { strokeDashoffset: 0 }],
-            { duration: 1500, delay: delays[i], easing: "ease", fill: "forwards" }
-          );
-          return;
-        }
-        path.style.transition = "none";
-        path.getBoundingClientRect();
-        path.style.transition = "stroke-dashoffset 1.5s ease " + delays[i] / 1000 + "s";
-        requestAnimationFrame(function () {
-          requestAnimationFrame(function () {
-            path.style.strokeDashoffset = "0";
-          });
-        });
+      var mobile = window.matchMedia("(max-width: 860px), (hover: none) and (pointer: coarse)").matches;
+      host.innerHTML = window.OGArt.cross({
+        className: "intro-cross " + (mobile ? "intro-cross-mobile" : "intro-cross-desktop"),
+        width: mobile ? 108 : 92,
+        sw: mobile ? 3.4 : 3,
+        stroke: "#f3f3f1",
+        pathLength: !mobile,
       });
     })();
   </script>

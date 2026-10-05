@@ -5,6 +5,8 @@
     const sw = o.sw || 3;
     const cls = o.className || "orthodox-cross";
     const w = o.width || 64;
+    const useLen = o.pathLength !== false;
+    const plen = useLen ? ' pathLength="100"' : "";
     return (
       '<svg class="' +
       cls +
@@ -17,10 +19,18 @@
       '" stroke-width="' +
       sw +
       '" stroke-linecap="square">' +
-      '<path pathLength="100" d="M40 4 V116"/>' +
-      '<path pathLength="100" d="M27 18 H53"/>' +
-      '<path pathLength="100" d="M6 42 H74"/>' +
-      '<path pathLength="100" d="M16 88 L64 102"/>' +
+      "<path" +
+      plen +
+      ' d="M40 4 V116"/>' +
+      "<path" +
+      plen +
+      ' d="M27 18 H53"/>' +
+      "<path" +
+      plen +
+      ' d="M6 42 H74"/>' +
+      "<path" +
+      plen +
+      ' d="M16 88 L64 102"/>' +
       "</svg>"
     );
   }
