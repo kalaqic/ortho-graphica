@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <title>Ortho Graphica — Свет во тьме светит</title>
+  <meta name="description" content="Black and white Orthodox prints. Свет во тьме светит.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/cave.css">
+  <script>
+    if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("locked");
+    }
+  </script>
+</head>
+<body>
+  <div id="intro">
+    <div class="intro-cave">
+      <div id="intro-cross"></div>
+      <p class="intro-kicker">Иоанн 1:5</p>
+      <p class="intro-title"><span>Свет</span><span>во тьме</span><span>светит</span></p>
+    </div>
+  </div>
+  <header class="bar">
+    <a class="brand" href="#/home">
+      <span id="brand-cross"></span>
+      <span>
+        <strong>Ortho Graphica</strong>
+        <small>свет во тьме · john 1:5</small>
+      </span>
+    </a>
+    <nav id="nav">
+      <a href="#/home">home <span>главная</span></a>
+      <a href="#/cloth">shop <span>одежды</span></a>
+      <a href="#/wallpapers">wallpapers <span>обои</span></a>
+      <a href="#/cell">about <span>о нас</span></a>
+      <a class="cart-link" href="#/basket">cart <span>корзина</span> <em id="cart-count">0</em></a>
+    </nav>
+    <button class="nav-toggle" type="button" aria-label="menu" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main id="stage" tabindex="-1"></main>
+
+  <footer class="foot">
+    <div class="foot-grid wrap">
+      <div>
+        <p class="ru">Святый Боже, Святый Крепкий, Святый Бессмертный, помилуй нас.</p>
+        <p class="verse">«И свет во тьме светит, и тьма не объяла его.»<span class="verse-en">And the light shines in the darkness, and the darkness did not overcome it.</span><cite>От Иоанна 1:5</cite></p>
+      </div>
+      <form class="stack js-letter">
+        <p class="kicker">list · рассылка</p>
+        <p class="fine">Every Sunday: Scripture and short stories that glorify Christ’s word, nothing else. First word on new drops and prints, straight to your inbox.<br>Каждое воскресенье: стихи Писания и истории во славу Христову. Новые вещи тебе первым.</p>
+        <label><span>Email</span><input name="email" type="email" autocomplete="email" required placeholder="name@domain"></label>
+        <p class="form-error" data-err></p>
+        <button class="btn" type="submit">join · подписаться</button>
+      </form>
+    </div>
+    <p class="proto wrap">Designs 100% handmade · рисунки вручную · merch 100% cotton · 100% хлопок<br>Prototype · cart, list, and orders stay in this browser · no payment</p>
+  </footer>
+
+  <div class="gate" id="gate" hidden>
+    <form class="gate-card" id="gate-form">
+      <p class="kicker">free · даром</p>
+      <h2>Leave an email</h2>
+      <p class="verse">«Придите ко Мне все труждающиеся и обремененные, и Я успокою вас.»<span class="verse-en">Come to Me, all you who labor and are heavy laden, and I will give you rest.</span><cite>Матфея 11:28</cite></p>
+      <p>The wallpaper downloads. Your address joins the list on this device.</p>
+      <label><span>Email</span><input name="email" type="email" required autocomplete="email"></label>
+      <p class="form-error" data-err></p>
+      <div class="row">
+        <button class="btn solid" type="submit">download · скачать</button>
+        <button class="btn" type="button" data-close>close · закрыть</button>
+      </div>
+    </form>
+  </div>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <div class="radio" id="radio">
+    <audio id="radio-audio" preload="auto" playsinline autoplay loop></audio>
+    <button class="radio-play" id="radio-play" type="button" aria-label="play">▶</button>
+    <div class="radio-main">
+      <input class="radio-seek" id="radio-seek" type="range" min="0" max="1000" value="0" step="1" aria-label="timeline">
+    </div>
+    <span class="radio-time" id="radio-time">0:00 / 0:00</span>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/art.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.getElementById("brand-cross").innerHTML = window.OGArt.cross({ width: 22, sw: 2.2, stroke: "#fff" });
+    document.getElementById("intro-cross").innerHTML = window.OGArt.cross({ className: "intro-cross", width: 92, sw: 3, stroke: "#f3f3f1" });
+  </script>
+</body>
+</html>
