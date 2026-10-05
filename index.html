@@ -6,7 +6,16 @@
   <meta name="theme-color" content="#000000">
   <title>Ortho Graphica — Свет во тьме светит</title>
   <meta name="description" content="Black and white Orthodox prints. Свет во тьме светит.">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta property="og:title" content="Ortho Graphica — Свет во тьме светит">
+  <meta property="og:description" content="Black and white Orthodox prints. Свет во тьме светит.">
+  <meta property="og:image" content="icon.jpg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ortho Graphica — Свет во тьме светит">
+  <meta name="twitter:description" content="Black and white Orthodox prints. Свет во тьме светит.">
+  <meta name="twitter:image" content="icon.jpg">
+  <link rel="icon" href="icon.jpg" type="image/jpeg">
+  <link rel="apple-touch-icon" href="icon.jpg">
   <link rel="stylesheet" href="css/cave.css">
   <script>
     document.documentElement.classList.add("locked");
@@ -90,7 +99,36 @@
   <script src="js/app.js"></script>
   <script>
     document.getElementById("brand-cross").innerHTML = window.OGArt.cross({ width: 22, sw: 2.2, stroke: "#fff" });
-    document.getElementById("intro-cross").innerHTML = window.OGArt.cross({ className: "intro-cross", width: 92, sw: 3, stroke: "#f3f3f1" });
+    (function () {
+      const host = document.getElementById("intro-cross");
+      if (!host) return;
+      host.innerHTML = window.OGArt.cross({ className: "intro-cross", width: 110, sw: 3.2, stroke: "#f3f3f1" });
+      const paths = host.querySelectorAll("path");
+      const delays = [200, 700, 1050, 1350];
+      paths.forEach(function (path, i) {
+        var len = 100;
+        try {
+          len = path.getTotalLength() || 100;
+        } catch (err) {}
+        path.style.strokeDasharray = String(len);
+        path.style.strokeDashoffset = String(len);
+        if (typeof path.animate === "function") {
+          path.animate(
+            [{ strokeDashoffset: len }, { strokeDashoffset: 0 }],
+            { duration: 1500, delay: delays[i], easing: "ease", fill: "forwards" }
+          );
+          return;
+        }
+        path.style.transition = "none";
+        path.getBoundingClientRect();
+        path.style.transition = "stroke-dashoffset 1.5s ease " + delays[i] / 1000 + "s";
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            path.style.strokeDashoffset = "0";
+          });
+        });
+      });
+    })();
   </script>
 </body>
 </html>

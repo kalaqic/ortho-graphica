@@ -688,16 +688,23 @@ textarea { min-height: 80px; resize: vertical; }
   pointer-events: none;
 }
 .intro-cave { text-align: center; width: min(640px, calc(100% - 32px)); }
-.intro-cross path {
-  stroke-dasharray: 100;
-  stroke-dashoffset: 100;
-  animation: draw 1.5s ease forwards;
+#intro-cross {
+  display: flex;
+  justify-content: center;
+  min-height: 120px;
 }
-.intro-cross path:nth-child(1) { animation-delay: 0.2s; }
-.intro-cross path:nth-child(2) { animation-delay: 0.7s; }
-.intro-cross path:nth-child(3) { animation-delay: 1.05s; }
-.intro-cross path:nth-child(4) { animation-delay: 1.35s; }
-@keyframes draw { to { stroke-dashoffset: 0; } }
+.intro-cross {
+  width: clamp(88px, 28vw, 120px);
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  overflow: visible;
+}
+.intro-cross path {
+  fill: none;
+  stroke: #f3f3f1;
+  stroke-linecap: square;
+}
 .intro-kicker, .intro-title span {
   opacity: 0;
   animation: fadeup 0.7s ease forwards;
@@ -747,10 +754,6 @@ textarea { min-height: 80px; resize: vertical; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .intro-cross path {
-    stroke-dashoffset: 0;
-    animation: none;
-  }
   .intro-kicker, .intro-title span {
     opacity: 1;
     animation: none;
